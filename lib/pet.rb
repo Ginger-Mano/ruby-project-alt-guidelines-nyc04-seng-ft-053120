@@ -1,7 +1,8 @@
 class Pet < ActiveRecord::Base
 
-    belongs_to :shelter
-    belongs_to :family
+    belongs_to :shelters
+    has_many :requests
+    has_many :families, through: :requests
 
     # def shelter
     #     Shelter.all.find { |shelter_instance| shelter_instance.id == self.shelter_id }
