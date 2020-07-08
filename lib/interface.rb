@@ -28,7 +28,7 @@ class Interface
     end
 
     def main_menu
-        system "clear"
+        # system "clear"
         puts "Welcome to the app, #{shelter.name}!"
         # puts "You have #{shelter.pets.count} pets!"
         prompt.select("Let's change some lives - What would you like to do?") do |menu|
