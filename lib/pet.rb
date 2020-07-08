@@ -1,6 +1,6 @@
 class Pet < ActiveRecord::Base
 
-    belongs_to :shelters
+    belongs_to :shelter
     has_many :requests
     has_many :families, through: :requests
 

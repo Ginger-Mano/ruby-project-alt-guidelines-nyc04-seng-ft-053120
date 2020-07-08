@@ -1,5 +1,5 @@
 class Interface
-    attr_accessor :prompt, :family, :shelter
+    attr_accessor :prompt, :shelter
 
     def initialize
         @prompt = TTY::Prompt.new
@@ -9,17 +9,26 @@ class Interface
         puts "Welcome to Be Best for Pets!"
     end
 
-    def choose_shelter_or_family
-        answer = prompt.select("Are you a family or a shelter?", [
-            "Family",
-            "Shelter"
+    def choose_login_or_register
+        answer = prompt.select("Would you like to Log In or Register?", [
+            "Log In",
+            "Register"
         ])
 
-        if answer == "Family"
-            Family.login_or_register
-        elsif answer == "Shelter"
-            Shelter.login_or_register
+        if answer == "Log In"
+            Shelter.logging_in
+        elsif answer == "Register"
+            Shelter.register
         end
+    end
+
+    def main_menu
+        puts "Welcome to the app, #{shelter.name}!"
+        puts "You have #{shelter.pets.count} pets!"
+        pet_names = shelter.pets.map do |pet_instance|
+            pet_instance.name
+        end
+        pet_name = prompt.select("Choose a Pet", pet_names)
     end
 
 end
