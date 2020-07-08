@@ -22,4 +22,15 @@ class Pet < ActiveRecord::Base
     #     @bff_id = bff_id
     #     @shelter_id = shelter_id
     # end
+
+    def display_families
+        family_names = self.families.map do |family|
+            family.name
+        end
+        if family_names.length > 0
+            TTY::Prompt.new.select("Here are the families interested in this pet:", family_names)
+        else
+            puts "No families are interested in this pet"
+        end 
+    end
 end

@@ -10,25 +10,41 @@ class Interface
     end
 
     def choose_login_or_register
-        answer = prompt.select("Would you like to Log In or Register?", [
-            "Log In",
-            "Register"
-        ])
+        # answer = prompt.select("Would you like to Log In or Register?", [
+        #     "Log In",
+        #     "Register"
+        # ])
 
-        if answer == "Log In"
-            Shelter.logging_in
-        elsif answer == "Register"
-            Shelter.register
+        # if answer == "Log In"
+        #     Shelter.logging_in
+        # elsif answer == "Register"
+        #     Shelter.register
+        # end
+
+        prompt.select("Would you like to Log In or Register?") do |menu|
+            menu.choice "Log In", -> {Shelter.logging_in}
+            menu.choice "Register", -> {Shelter.register}
         end
     end
 
     def main_menu
+        system "clear"
         puts "Welcome to the app, #{shelter.name}!"
-        puts "You have #{shelter.pets.count} pets!"
-        pet_names = shelter.pets.map do |pet_instance|
-            pet_instance.name
+        # puts "You have #{shelter.pets.count} pets!"
+        prompt.select("Let's change some lives - What would you like to do?") do |menu|
+            menu.choice "See all pets", -> { self.see_all_pets }
+            menu.choice "Add a pet", -> {}
+            menu.choice "Delete a pet", -> {}
+            menu.choice "Log out", -> {}
         end
-        pet_name = prompt.select("Choose a Pet", pet_names)
+    end   
+        
+    def see_all_pets
+        system "clear"
+        sleep(1)
+        shelter.display_pets
+        main_menu 
     end
+       
 
 end
