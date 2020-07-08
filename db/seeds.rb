@@ -12,8 +12,8 @@ Shelter.create([
 ])
 
 Pet.create([
-{name: "Sparky", breed: "Pitbull", age: 5 , adoption_status: "Available", description: "Electrifying fun times!", shelter_id: Shelter.first.id},
-{name: "Spike", breed: "Siberian Tiger Hound", age: 10, adoption_status: "Available", description: "Sharp as a tack and great with babies.", shelter_id: Shelter.first.id},
+{name: "Sparky", breed: "Pitbull", age: 5 , adoption_status: "Pending", description: "Electrifying fun times!", shelter_id: Shelter.first.id},
+{name: "Spike", breed: "Siberian Tiger Hound", age: 10, adoption_status: "Pending", description: "Sharp as a tack and great with babies.", shelter_id: Shelter.first.id},
 {name: "Air Bud", breed: "Golden Retriever", age: 4, adoption_status: "Available", description: "Soar to a new life with this exciting dog.", shelter_id: Shelter.first.id},
 {name: "Beethoven", breed: "German Shepherd", age: 6, adoption_status: "Available", description: "Loyal and dependable", shelter_id: Shelter.first.id},
 {name: "Tinkerbell", breed: "Chihuahua", age: 8, adoption_status: "Available", description: "Likes to dress up and go shopping.", shelter_id: Shelter.first.id},
@@ -34,8 +34,8 @@ Family.create([
 ])
 
 Request.create([
-    {family: Family.first, pet: Pet.first},
-    {family: Family.fifth, pet: Pet.second},
-    {family: Family.second, pet: Pet.second}
+    {family: Family.first, pet: Pet.first, status: "Pending"},
+    {family: Family.fifth, pet: Pet.second, status: "Pending"},
+    {family: Family.second, pet: Pet.second, status: "Pending"}
 ])
 

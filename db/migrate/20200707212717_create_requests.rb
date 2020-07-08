@@ -3,7 +3,7 @@ class CreateRequests < ActiveRecord::Migration[5.2]
     create_table :requests do |t|
       t.integer :family_id
       t.integer :pet_id
-      # t.string :status
+      t.string :status
     end
   end
 end

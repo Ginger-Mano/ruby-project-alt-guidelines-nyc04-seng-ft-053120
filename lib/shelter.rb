@@ -68,6 +68,28 @@ class Shelter < ActiveRecord::Base
         puts "Your pets been successfully added!"
     end
     
+    def add_request
+        # binding.pry
+        family_names = Family.all.map do |family_instance|
+            {family_instance.name => family_instance.id}
+        end
+        family_id = TTY::Prompt.new.select("Which family made the request?", family_names)
+        found_family = Family.find(family_id)
+        # binding.pry
+        pet_names = self.pets.map do |pet_instance|
+            {pet_instance.name => pet_instance.id}
+        end
+        pet_id = TTY::Prompt.new.select("Choose a pet", pet_names)
+        found_pet = Pet.find(pet_id)
+        # binding.pry 
 
+        Request.create(
+            family: found_family,
+            pet: found_pet,
+            status: "Pending"
+        )
+        found_pet.adoption_status = "Pending"
+        puts "The #{found_family.name} family has successfully requested the adoption of #{found_pet.name}!"
+    end
 
 end
