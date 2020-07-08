@@ -4,7 +4,7 @@ Family.destroy_all
 Request.destroy_all
 
 Shelter.create([
-    {name: "ASPCA", location: "Long Island", email: "longisland@aspca.com"},
+    {name: "ASPCA", location: "Long Island", email: "a"},
     {name: "Two Tailz Rescue", location: "Atlanta", email: "ttr@gmail.com"},
     {name: "BARC", location: "Brooklyn", email: "barc@woof.com"},
     {name: "Humane Society", location: "Washington DC", email: "capital@humanesociety.com"},
