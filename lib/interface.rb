@@ -33,7 +33,7 @@ class Interface
         # puts "You have #{shelter.pets.count} pets!"
         prompt.select("Let's change some lives - What would you like to do?") do |menu|
             menu.choice "See all pets", -> { self.see_all_pets }
-            menu.choice "Add a pet", -> {}
+            menu.choice "Add a pet", -> { self.add_a_pet }
             menu.choice "Delete a pet", -> {}
             menu.choice "Log out", -> {}
         end
@@ -41,9 +41,26 @@ class Interface
         
     def see_all_pets
         system "clear"
-        sleep(1)
+        #sleep(1)
         shelter.display_pets
-        main_menu 
+        main_menu_after_action
+    end
+
+    def add_a_pet
+        system "clear"
+        shelter.add_a_pet
+        main_menu_after_action
+    end
+
+    def main_menu_after_action
+        puts "Welcome to the app, #{shelter.name}!"
+        prompt.select("Let's change some lives - What would you like to do?") do |menu|
+            menu.choice "See all pets", -> { self.see_all_pets }
+            menu.choice "Add a pet", -> { self.add_a_pet }
+            menu.choice "Delete a pet", -> {}
+            menu.choice "Log out", -> {}
+        end  
+        
     end
        
 

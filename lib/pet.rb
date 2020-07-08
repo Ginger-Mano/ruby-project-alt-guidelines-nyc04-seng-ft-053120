@@ -33,4 +33,28 @@ class Pet < ActiveRecord::Base
             puts "No families are interested in this pet"
         end 
     end
+
+    # def add_a_pet
+    #     prompt = TTY::Prompt.new
+    #     pet_name = prompt.ask("What is the pet's name?")
+        
+    #     breed = prompt.ask("What is the breed of this pet?")
+    #     age = prompt.ask("How old is the pet?")
+    #     description = prompt.ask("How would you describe this pet?")
+    #     binding.pry
+    #     self.create(
+    #         pet_name: name,
+    #         breed: breed,
+    #         age: age,
+    #         adoption_status: "Available",
+    #         description: description,
+    #         shelter_id: shelter_id
+    #     )
+    # end
+
+    # def set_shelter_id
+    #     self.pets.map do |pet_instance|
+    #         {pet_instance.name => shelter_instance.id}
+    #     end
+    # end
 end
