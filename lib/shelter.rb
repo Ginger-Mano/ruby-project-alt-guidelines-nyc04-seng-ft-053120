@@ -37,12 +37,14 @@ class Shelter < ActiveRecord::Base
         pet_names = self.pets.map do |pet_instance|
             {pet_instance.name => pet_instance.id}
         end
+        # binding.pry
         # pet_id = prompt.multi_select("Choose a Pet", pet_names)
         # binding.pry
 
         if pet_names.length > 0
             pet_id = TTY::Prompt.new.select("Choose a pet", pet_names)
             found_pet = Pet.find(pet_id)
+            binding.pry
             found_pet.display_families
         else
             puts "You don't have any pets in your database!"
@@ -81,15 +83,31 @@ class Shelter < ActiveRecord::Base
         end
         pet_id = TTY::Prompt.new.select("Choose a pet", pet_names)
         found_pet = Pet.find(pet_id)
-        # binding.pry 
+         binding.pry 
 
         Request.create(
             family: found_family,
             pet: found_pet,
-            status: "Pending"
+            status: "Pending",
+            family_name: found_family.name,
+            pet_name: found_pet.name
         )
         found_pet.adoption_status = "Pending"
         puts "The #{found_family.name} family has successfully requested the adoption of #{found_pet.name}!"
     end
+
+    def update_request
+        # binding.pry
+        #request_names = Request.all.map do |req_instance|
+            # binding.pry
+         #   {req_instance.family_name => req_instance.pet_name}
+        # end
+        request_pet_names = Request.all.map do |req_instance|
+            {req_instance.pet_name => req_instance.pet_id}
+        end
+        
+        # binding.pry
+    end
+
 
 end

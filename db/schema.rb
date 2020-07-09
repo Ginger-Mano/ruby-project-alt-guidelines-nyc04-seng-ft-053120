@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 2020_07_07_212717) do
     t.integer "family_id"
     t.integer "pet_id"
     t.string "status"
+    t.string "pet_name"
+    t.string "family_name"
   end
 
   create_table "shelters", force: :cascade do |t|

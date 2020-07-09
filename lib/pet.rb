@@ -57,4 +57,12 @@ class Pet < ActiveRecord::Base
     #         {pet_instance.name => shelter_instance.id}
     #     end
     # end
+
+    # def update_request
+    #     binding.pry
+    #     request_names = self.request.map do |req_instance|
+    #         # binding.pry
+    #         {req_instance.family_name => req_instance.family_id}
+    #     end
+    # end
 end

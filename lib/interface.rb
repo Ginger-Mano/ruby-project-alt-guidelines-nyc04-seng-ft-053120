@@ -1,5 +1,5 @@
 class Interface
-    attr_accessor :prompt, :shelter
+    attr_accessor :prompt, :shelter, :request
 
     def initialize
         @prompt = TTY::Prompt.new
@@ -35,6 +35,7 @@ class Interface
             menu.choice "See all pets", -> { self.see_all_pets }
             menu.choice "Add a pet", -> { self.add_a_pet }
             menu.choice "Add an Adoption Request", -> { self.add_request }
+            menu.choice "Update an Adoption Request", -> { self.update_request }
             menu.choice "Log out", -> {}
         end
     end   
@@ -66,7 +67,13 @@ class Interface
             menu.choice "Delete a pet", -> {}
             menu.choice "Log out", -> {}
         end  
-        
+
+    end
+
+    def update_request
+        system "clear"
+        shelter.update_request
+        main_menu
     end
        
 
